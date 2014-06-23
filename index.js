@@ -5,20 +5,21 @@ var util = require('util');
 * Creates a readable stream of RGB values from a canvas object in the order in which they appear.
 * @constructor
 * @param {object} canvas - A canvas object
-* @param {integer} options.reverse - Spit out colors in reverse order (bottom right to top left)
+* @param {integer} reverse - Spit out colors in reverse order (bottom right to top left)
 */
 
-function PixelSpitter(canvas, options) {
+function PixelSpitter(canvas, reverse) {
   if (!(this instanceof PixelSpitter)) {
     return new PixelSpitter(canvas);
   }
 
   stream.Readable.call(this);
 
+  this.options.reverse = reverse || false;
+
   //@todo @lookinto: Work around not implemented error
   this._read = function noop() {};
 
-  this.options = options;
 
   this.parse(canvas);
 }
