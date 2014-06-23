@@ -39,9 +39,8 @@ PixelSpitter.prototype.parse = function(canvas) {
     }
   } else {
     for (var y = 0; y < canvas.height; ++y) {
-        var i = (y * canvas.width + x) * 4;
-        this.push(imgd.data[i]+','+imgd.data[++i]+','+imgd.data[++i]);
-      }
+      var i = (y * canvas.width + x) * 4;
+      this.push(imgd.data[i]+','+imgd.data[++i]+','+imgd.data[++i]);
     }
   }
 };
