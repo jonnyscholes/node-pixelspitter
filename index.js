@@ -16,7 +16,9 @@ function PixelSpitter(canvas, reverse) {
   stream.Readable.call(this);
 
   this.options = {};
-  this.options.reverse = reverse || false;
+
+  if (reverse === undefined) reverse = false;
+  this.options.reverse = reverse;
 
   //@todo @lookinto: Work around not implemented error
   this._read = function noop() {};
