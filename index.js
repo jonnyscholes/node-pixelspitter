@@ -15,11 +15,11 @@ function PixelSpitter(canvas, reverse) {
 
   stream.Readable.call(this);
 
+  this.options = {};
   this.options.reverse = reverse || false;
 
   //@todo @lookinto: Work around not implemented error
   this._read = function noop() {};
-
 
   this.parse(canvas);
 }
