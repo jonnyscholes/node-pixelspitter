@@ -10,7 +10,7 @@ var util = require('util');
 
 function PixelSpitter(canvas, reverse) {
   if (!(this instanceof PixelSpitter)) {
-    return new PixelSpitter(canvas);
+    return new PixelSpitter(canvas, reverse);
   }
 
   stream.Readable.call(this);
@@ -42,8 +42,10 @@ PixelSpitter.prototype.parse = function(canvas) {
     }
   } else {
     for (var y = 0; y < canvas.height; ++y) {
-      var i = (y * canvas.width + x) * 4;
-      this.push(imgd.data[i]+','+imgd.data[++i]+','+imgd.data[++i]);
+      for (var x = 0; x < canvas.width; ++x) {
+        var i = (y * canvas.width + x) * 4;
+        this.push(imgd.data[i]+','+imgd.data[++i]+','+imgd.data[++i]);
+      }
     }
   }
 };
